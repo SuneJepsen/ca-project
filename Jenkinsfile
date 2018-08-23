@@ -1,12 +1,10 @@
 node {
 
-    stage('Preparation') {
-	// Get code from Github repository 
+    stage('Preparation') { 
        checkout scm
     }
 
     stage(‘Build’) {
-	//Run the python build
 	sh “python run.py”
     }
 
