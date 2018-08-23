@@ -29,7 +29,7 @@ node('ubuntu'){
     }
 
     stage('Result'){
-      archiveArtifacts "/usr/src/app/run.py" 
+      archiveArtifacts '/usr/src/app/run.py' 
     }
 }
 
