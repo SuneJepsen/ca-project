@@ -18,12 +18,12 @@ node {
 node('ubuntu-test'){
     cleanWs()    
     stage('Push'){
+        unstash "repo"
         pretestedIntegrationPublisher()
         sh 'docker build -t kongsune/pythonapp .'
         sh 'docker push kongsune/pythonapp'
     }
     stage('Result'){
-        unstash "repo"
         archiveArtifacts '**/run.py'
     }
     stage('Deploy'){
