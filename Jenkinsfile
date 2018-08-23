@@ -23,14 +23,15 @@ node('ubuntu'){
       }
     }
 
+    stage('Result'){
+      archiveArtifacts '/usr/src/app/run.py' 
+    }
+    
     stage('Push'){
       pretestedIntegrationPublisher()
       deleteDir()
     }
 
-    stage('Result'){
-      archiveArtifacts '/usr/src/app/run.py' 
-    }
 }
 
 
