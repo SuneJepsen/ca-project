@@ -27,6 +27,10 @@ node('ubuntu'){
       pretestedIntegrationPublisher()
       deleteDir()
     }
+
+    stage('Result'){
+      archiveArtifacts "run.py" 
+    }
 }
 
 
