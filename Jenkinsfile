@@ -1,5 +1,6 @@
 node {
-    stage('Preparation') { 
+    cleanWs()
+    stage('Preparation') {
         checkout([$class: 'GitSCM', branches: [[name: '*/ready/**']], 
         doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout'], 
         pretestedIntegration(gitIntegrationStrategy: accumulated(), integrationBranch: 'master', 
@@ -15,11 +16,10 @@ node {
 }
 
 node('ubuntu-test'){
+    cleanWs()
     stage('Result'){
-        ws {
-            unstash "repo"
-            archiveArtifacts '**/run.py' 
-        }
+        unstash "repo"
+        archiveArtifacts '**/run.py'
     }
     
     stage('Push'){
