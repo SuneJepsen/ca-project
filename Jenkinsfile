@@ -8,12 +8,12 @@ node('master') {
         stash name: "repo", includes: "**", useDefaultExcludes: false
     }
     stage('Build'){
-        sh 'docker build -t pythonapp .'
+        sh 'docker build -t kongsune/pythonapp .'
     }
 
     stage('Test'){
       if (isUnix()) {
-         sh 'docker run -i pythonapp python /usr/src/app/tests.py'
+         sh 'docker run -i kongsune/pythonapp python /usr/src/app/tests.py'
       }
     }
 }
