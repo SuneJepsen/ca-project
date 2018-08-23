@@ -14,7 +14,6 @@ node('master') {
     stage('Test'){
       if (isUnix()) {
          sh 'docker run -i pythonapp python /usr/src/app/tests.py'
-         stash name: "build-result", includes: "target/**"
       }
     }
 }
@@ -22,8 +21,7 @@ node('master') {
 node('ubuntu'){
     stage('Result'){
         unstash 'repo'
-        unstash 'build-result'
-        archiveArtifacts 'target/*.py' 
+        archiveArtifacts '**/usr/src/app/run.py' 
     }
     
     stage('Push'){
