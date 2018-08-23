@@ -11,7 +11,6 @@ node {
     stage('Test'){
       if (isUnix()) {
          sh 'docker run -i kongsune/pythonapp python /usr/src/app/tests.py'
-         sh 'docker run -p 80:5000 -d kongsune/pythonapp'
       }
     }
 }
@@ -29,9 +28,9 @@ node('ubuntu-test'){
         sh 'docker push kongsune/pythonapp'
     }
     
-    //stage('Deploy'){
-    //    sh 'docker-compose up -d'
-    //}
+    stage('Deploy'){
+        sh 'docker run -p 80:5000 -d kongsune/pythonapp'
+    }
 }
 
 
