@@ -5,7 +5,7 @@ node('master') {
         pretestedIntegration(gitIntegrationStrategy: accumulated(), integrationBranch: 'master', 
         repoName: 'origin')], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'anna0207', 
         url: 'git@github.com:SuneJepsen/ca-project.git']]])
-        //stash name: "repo", includes: "**", useDefaultExcludes: false
+        stash name: "repo", includes: "**", useDefaultExcludes: false
     }
     stage('Test'){
       if (isUnix()) {
@@ -17,7 +17,7 @@ node('master') {
 node('ubuntu'){
     stage('Result'){
         ws {
-            //unstash "repo"
+            unstash "repo"
             archiveArtifacts '**/run.py' 
         }
     }
