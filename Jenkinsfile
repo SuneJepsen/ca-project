@@ -20,8 +20,10 @@ node('master') {
 
 node('ubuntu'){
     stage('Result'){
-        unstash 'repo'
-        archiveArtifacts '**/run.py' 
+        ws {
+            unstash 'repo'
+            archiveArtifacts '**/run.py' 
+        }
     }
     
     stage('Push'){
