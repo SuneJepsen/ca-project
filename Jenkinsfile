@@ -29,9 +29,7 @@ node('ubuntu-test'){
     }
     
     stage('Deploy'){
-        dir('workspace/CA-project-Pipeline') {
-            sh 'docker-compose up -d'
-        }
+        sh 'docker-compose up -d'
     }
 }
 
