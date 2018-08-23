@@ -2,7 +2,7 @@ node {
 
     stage ('Preparation'){
 	// Get code from Github repository 
-  git credentialsId: ‘anna0207’, url: 'git@github.com:SuneJepsen/ca-project.git’
+       checkout scm
     }
 
     stage (‘Build’){
