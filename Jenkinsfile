@@ -1,7 +1,7 @@
 node {
 
     stage('Preparation') { 
-       checkout scm
+       git credentialsId: 'anna0207', url: 'git@github.com:SuneJepsen/ca-project.git'
     }
 }
 
