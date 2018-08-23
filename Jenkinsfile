@@ -29,8 +29,8 @@ node('ubuntu-test'){
     }
     
     stage('Deploy'){
-        sh 'docker container stop kongsune/pythonapp'
-        sh 'docker run --rm -p 80:5000 -d kongsune/pythonapp'
+        sh 'docker container stop pythonapp'
+        sh 'docker run --name pythonapp --rm -p 80:5000 -d kongsune/pythonapp'
     }
 }
 
