@@ -12,9 +12,12 @@ node {
     
   //  stash name: "repo", includes: "**", useDefaultExcludes: false
     }
+
+
  stage('Build'){
    sh 'docker build -t pythonapp .'
  }
+
  stage('Test'){
        if (isUnix()) {
             sh 'docker run -i pythonapp python /usr/src/app/tests.py'
