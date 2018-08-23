@@ -13,7 +13,8 @@ node {
   //  stash name: "repo", includes: "**", useDefaultExcludes: false
     }
 
- state('Build'){
+
+ stage('Build'){
    sh 'docker build -t pythonapp .'
  }
 
