@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+
+   ca-project:
+      image: pythonapp
+      ports:
+        - 80:5000
