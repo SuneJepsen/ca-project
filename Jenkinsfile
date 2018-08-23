@@ -1,4 +1,4 @@
-node('master') {
+node {
     stage('Preparation') { 
         checkout([$class: 'GitSCM', branches: [[name: '*/ready/**']], 
         doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout'], 
@@ -14,7 +14,7 @@ node('master') {
     }
 }
 
-node('ubuntu'){
+node('ubuntu-test'){
     stage('Result'){
         ws {
             unstash "repo"
