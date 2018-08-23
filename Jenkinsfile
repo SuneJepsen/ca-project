@@ -1,16 +1,16 @@
 node {
 
-    stage ('Preparation'){
+    stage('Preparation') {
 	// Get code from Github repository 
        checkout scm
     }
 
-    stage (‘Build’){
+    stage(‘Build’) {
 	//Run the python build
 	sh “python run.py”
     }
 
-    stage(‘Test’){
+    stage(‘Test’) {
 	sh ‘tox -e py27’
     }
 
