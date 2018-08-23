@@ -26,10 +26,12 @@ node('ubuntu-test'){
         pretestedIntegrationPublisher()
         sh 'docker build -t kongsune/pythonapp .'
         sh 'docker push kongsune/pythonapp'
-        sh 'docker-compose up -d'
-        deleteDir()
     }
     
+    stage('Deploy'){
+        sh 'cd workspace/CA-project-Pipeline/'
+        sh 'docker-compose up -d'
+    }
 }
 
 
