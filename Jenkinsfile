@@ -8,7 +8,7 @@ node('master') {
         stash name: "repo", includes: "**", useDefaultExcludes: false
     }
     stage('Build'){
-        sh 'docker build -t pythonapp .'
+        sh 'docker build -t kongsune/pythonapp .'
     }
 
     stage('Test'){
