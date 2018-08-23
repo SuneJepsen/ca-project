@@ -10,13 +10,13 @@ node {
     repoName: 'origin')], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'anna0207', 
     url: 'git@github.com:SuneJepsen/ca-project.git']]])
     
-    stash name: "repo", includes: "**", useDefaultExcludes: false
+  //  stash name: "repo", includes: "**", useDefaultExcludes: false
     }
  stage('Test'){
        if (isUnix()) {
             sh 'docker run -i pythonapp python /usr/src/app/tests.py'
             //sh "mvn -Dmaven.test.failure.ignore clean package"
-            stash name: "build-result", includes: "target/**"
+    //        stash name: "build-result", includes: "target/**"
 
         }
    }
