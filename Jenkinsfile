@@ -11,7 +11,7 @@ node {
     }
 
     stage(‘Test’) {
-	sh ‘tox -e py27’
+	sh ‘python /usr/src/tests.py’
     }
 
     stage(‘Result’) {
