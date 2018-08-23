@@ -7,10 +7,6 @@ node('master') {
         url: 'git@github.com:SuneJepsen/ca-project.git']]])
         stash name: "repo", includes: "**", useDefaultExcludes: false
     }
-    stage('Build'){
-        sh 'docker build -t kongsune/pythonapp .'
-    }
-
     stage('Test'){
       if (isUnix()) {
          sh 'docker run -i kongsune/pythonapp python /usr/src/app/tests.py'
@@ -28,9 +24,10 @@ node('ubuntu'){
     
     stage('Push'){
         pretestedIntegrationPublisher()
+        sh 'docker build -t kongsune/pythonapp .'
+        sh 'docker push kongsune/pythonapp'
         deleteDir()
     }
-
 }
 
 
