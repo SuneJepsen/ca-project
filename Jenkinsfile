@@ -19,7 +19,7 @@ node('ubuntu'){
       if (isUnix()) {
          sh 'docker run -i pythonapp python /usr/src/app/tests.py'
        //sh "mvn -Dmaven.test.failure.ignore clean package"
-         stash name: "build-result", includes: "target/**"
+      
       }
     }
 
