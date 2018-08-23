@@ -12,16 +12,14 @@ node {
     
     stash name: "repo", includes: "**", useDefaultExcludes: false
     }
-
-   stage('Test'){
+ stage('Test'){
        if (isUnix()) {
-           sh 'docker run -i -u "$(id -u):$(id -g)" pythonapp python /usr/src/app/tests.py' 
+            sh 'docker run -i pythonapp python /usr/src/app/tests.py'
             //sh "mvn -Dmaven.test.failure.ignore clean package"
             stash name: "build-result", includes: "target/**"
-  
+
         }
    }
-
     stage('Push'){
         pretestedIntegrationPublisher()
 
