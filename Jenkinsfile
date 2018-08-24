@@ -33,8 +33,8 @@ node('ubuntu-test'){
     }
     
     stage('Deploy'){
-        sh 'docker-compose down'
-        sh 'docker-compose up -d'
+        sh 'docker container stop pythonapp'
+        sh 'docker run --name pythonapp --rm -p 80:5000 -d kongsune/pythonapp'
     }
 }
 
